@@ -15,37 +15,31 @@
   </style>
 </head>
 <body>
-  <h1>Добро пожаловать в Mini App</h1>
+  <h1>Welcome to Telegram Mini App</h1>
   <div id="user-info">
-    <p>Загрузка информации о пользователе...</p>
+    <p>Downloading user information ...</p>
   </div>
 
-  <!-- Подключаем официальный Telegram Web App скрипт -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
-    // Инициализируем Telegram Web App
     const tg = window.Telegram.WebApp;
-    // Растягиваем окно приложения (опционально)
-    tg.expand();
+    tg.expand(); // optional
 
-    // Получаем данные пользователя (небезопасный, но простой способ)
-    const user = tg.initDataUnsafe.user;
+    const user = tg.initDataUnsafe.user; // Todo: unsafe!!!
 
-    // Функция для отображения информации о пользователе
     function displayUserInfo(user) {
       if (!user) {
-        document.getElementById('user-info').innerHTML = '<p>Информация о пользователе не найдена.</p>';
+        document.getElementById('user-info').innerHTML = '<p>User information not available.</p>';
         return;
       }
       document.getElementById('user-info').innerHTML = `
         <p><strong>ID:</strong> ${user.id}</p>
-        <p><strong>Имя:</strong> ${user.first_name}</p>
-        <p><strong>Фамилия:</strong> ${user.last_name ? user.last_name : '-'}</p>
+        <p><strong>First Name:</strong> ${user.first_name}</p>
+        <p><strong>Last Name:</strong> ${user.last_name ? user.last_name : '-'}</p>
         <p><strong>Username:</strong> ${user.username ? user.username : '-'}</p>
       `;
     }
 
-    // Отображаем полученные данные
     displayUserInfo(user);
   </script>
 </body>
