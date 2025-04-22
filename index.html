@@ -46,7 +46,8 @@
 
     displayUserInfo(user);
     
-    document.getElementById('btn-send').addEventListener('click', () => {
+    document.getElementById('btn-send').addEventListener('click', (e) => {
+      console.log('on Click', e)
       const text = document.getElementById('msg').value.trim();
       if (!text) return alert('Введите текст');
       // send message
@@ -57,7 +58,8 @@
       }));
     });
 
-    document.getElementById('btn-cmd').addEventListener('click', () => {
+    document.getElementById('btn-cmd').addEventListener('click', (e) => {
+      console.log('on Click', e)
       const tg = window.Telegram.WebApp;
       // option 1: use sendData
       tg.sendData(JSON.stringify({
