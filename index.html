@@ -50,6 +50,7 @@
       const text = document.getElementById('msg').value.trim();
       if (!text) return alert('Введите текст');
       // send message
+    const tg = window.Telegram.WebApp;
       tg.sendData(JSON.stringify({
         action: 'message',
         text: text
@@ -57,6 +58,7 @@
     });
 
     document.getElementById('btn-cmd').addEventListener('click', () => {
+      const tg = window.Telegram.WebApp;
       // option 1: use sendData
       tg.sendData(JSON.stringify({
         action: 'command',
