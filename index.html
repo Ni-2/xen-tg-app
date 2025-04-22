@@ -41,7 +41,10 @@
     }
 
     displayUserInfo(user);
-    tg?.sendData(JSON.stringify({ foo: 'bar' }))
+    tg?.sendData(JSON.stringify({
+        action: 'command',
+        command: '/help'
+    }));
   </script>
 </body>
 </html>
