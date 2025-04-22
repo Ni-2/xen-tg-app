@@ -58,14 +58,14 @@
 
     document.getElementById('btn-cmd').addEventListener('click', () => {
       // option 1: use sendData
-      tg.sendData(JSON.stringify({
-        action: 'command',
-        command: '/help'
-      }));
-      tg.close();
+      // tg.sendData(JSON.stringify({
+      //   action: 'command',
+      //   command: '/help'
+      // }));
+      // tg.close();
 
       // option 2: use deeplink (open chat and send /help)
-      // tg.openLink(`https://t.me/YourBotUsername?start=${encodeURIComponent('help')}`);
+      tg.openLink(`https://t.me/test-xen-app-bot?start=${encodeURIComponent('help')}`);
     });
   </script>
 </body>
