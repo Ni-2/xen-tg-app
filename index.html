@@ -19,6 +19,10 @@
   <div id="user-info">
     <p>Downloading user information ...</p>
   </div>
+  <input id="msg" type="text" placeholder="Ваш текст"/>
+  <button id="btn-send">Send to bot</button>
+  <hr>
+  <button id="btn-cmd">Run the command /help</button>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
@@ -41,10 +45,28 @@
     }
 
     displayUserInfo(user);
-    tg?.sendData(JSON.stringify({
+    
+    document.getElementById('btn-send').addEventListener('click', () => {
+      const text = document.getElementById('msg').value.trim();
+      if (!text) return alert('Введите текст');
+      // send message
+      tg.sendData(JSON.stringify({
+        action: 'message',
+        text: text
+      }));
+    });
+
+    document.getElementById('btn-cmd').addEventListener('click', () => {
+      // option 1: use sendData
+      tg.sendData(JSON.stringify({
         action: 'command',
         command: '/help'
-    }));
+      }));
+      tg.close();
+
+      // option 2: use deeplink (open chat and send /help)
+      // tg.openLink(`https://t.me/YourBotUsername?start=${encodeURIComponent('help')}`);
+    });
   </script>
 </body>
 </html>
